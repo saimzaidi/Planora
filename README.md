@@ -1,11 +1,29 @@
-<div align="center">
+Planora — Mood → Budget → Real-World Plans
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Planora helps users decide what to do by turning their mood, budget, group type, location and date into personalized local outing plans using real-world places.
 
-  <h1>Built with AI Studio</h2>
+Features
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+📍 Location-aware discovery
+🗺️ Interactive map
+🤖 Gemini-powered recommendations
+💰 Budget-aware outing plans
+📌 Real Google Places data
+🔗 Direct Google Maps navigation
+📱 Responsive UI
+🛡️ Server-side API key protection
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+Tech Stack
 
-</div>
+React
+TypeScript
+Node.js
+Gemini API
+Google Maps Platform Places API
+Leaflet
+OpenStreetMap
+Vercel
+
+Architecture
+
+User preferences → Places API → Normalized data → Gemini → Validated plans → Map

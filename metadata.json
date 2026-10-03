@@ -1,0 +1,6 @@
+{
+  "name": "Planora",
+  "description": "Local outing and event discovery platform that helps you plan unforgettable days out based on mood, budget, and group.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
