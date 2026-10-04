@@ -75,13 +75,6 @@ export const Footer: React.FC = () => {
           <div>
             © {new Date().getFullYear()} Planora. All rights reserved.
           </div>
-          <div className="flex items-center gap-4">
-            <span>Discover Local</span>
-            <span aria-hidden="true">·</span>
-            <span>Live Vibrantly</span>
-            <span aria-hidden="true">·</span>
-            <span>Spend Intentionally</span>
-          </div>
         </div>
       </div>
     </footer>

@@ -543,7 +543,7 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
 
         {/* POLISHED LOADING STATE */}
         {isSearching ? (
-          <div className="bg-white rounded-2xl p-10 sm:p-14 border border-neutral-200 shadow-sm flex flex-col items-center justify-center text-center animate-in fade-in duration-200 max-w-xl mx-auto my-8">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 md:p-10 border border-neutral-200 shadow-sm flex flex-col items-center justify-center text-center animate-in fade-in duration-200 max-w-xl mx-auto my-8 w-full">
             <div className="w-14 h-14 rounded-2xl bg-orange-50 border border-orange-200 flex items-center justify-center mb-5 text-orange-600 shadow-xs">
               <Loader2 className="w-7 h-7 animate-spin" />
             </div>
@@ -556,7 +556,7 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
             </p>
 
             {/* 3-Stage Progress Indicator */}
-            <div className="flex flex-col sm:flex-row items-center gap-2 mt-8 w-full">
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2 sm:gap-2.5 mt-8 w-full">
               {[
                 { stage: 1, label: 'Finding local places' },
                 { stage: 2, label: 'Matching vibe & budget' },
@@ -567,7 +567,7 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
                 return (
                   <div
                     key={st.stage}
-                    className={`flex-1 w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border text-xs font-semibold transition-all ${
+                    className={`flex-1 min-w-0 w-full sm:w-auto sm:min-w-[140px] flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-3 rounded-xl border text-xs font-semibold transition-all ${
                       isDone
                         ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
                         : isCurrent
@@ -757,7 +757,7 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
               {outingPlans && outingPlans.status === 'success' && outingPlans.plans.length > 0 ? (
                 <div className="space-y-6">
                   {/* Plan Tabs Selector */}
-                  <div className="flex flex-wrap gap-2.5 pb-2 border-b border-neutral-100">
+                  <div className="flex flex-wrap gap-2.5 pb-2 border-b border-neutral-100 w-full min-w-0">
                     {outingPlans.plans.map((plan, idx) => {
                       const isActive = (activePlanTab === idx) || (!outingPlans.plans[activePlanTab] && idx === 0);
                       return (
@@ -768,19 +768,19 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
                             setActivePlanTab(idx);
                             setActiveStopIndex(null);
                           }}
-                          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                          className={`flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs font-semibold transition-all cursor-pointer max-w-full min-w-0 ${
                             isActive
                               ? 'bg-neutral-900 text-white shadow-xs'
                               : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200/80 hover:text-neutral-900'
                           }`}
                         >
-                          <span className={`w-5 h-5 rounded-full text-[11px] font-bold flex items-center justify-center ${
+                          <span className={`w-5 h-5 rounded-full text-[11px] font-bold flex items-center justify-center shrink-0 ${
                             isActive ? 'bg-orange-500 text-white' : 'bg-neutral-200 text-neutral-800'
                           }`}>
                             {idx + 1}
                           </span>
-                          <span className="truncate max-w-[180px] sm:max-w-[240px]">{plan.title}</span>
-                          <span className={`text-[10px] px-1.5 py-0.5 rounded-md ${
+                          <span className="truncate max-w-[140px] sm:max-w-[200px] md:max-w-[240px]">{plan.title}</span>
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded-md shrink-0 ${
                             isActive ? 'bg-neutral-800 text-neutral-300' : 'bg-neutral-200 text-neutral-600'
                           }`}>
                             {plan.stops.length} {plan.stops.length === 1 ? 'stop' : 'stops'}
@@ -796,11 +796,11 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
                     if (!currentPlan) return null;
 
                     return (
-                      <div className="bg-neutral-50/70 border border-neutral-200/90 rounded-2xl p-6 sm:p-8 space-y-6">
+                      <div className="bg-neutral-50/70 border border-neutral-200/90 rounded-2xl p-5 sm:p-8 space-y-6 min-w-0">
                         {/* Plan Header & Cost Metas */}
-                        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 pb-6 border-b border-neutral-200/80">
-                          <div className="space-y-1.5 max-w-xl">
-                            <div className="flex items-center gap-2">
+                        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4 pb-6 border-b border-neutral-200/80 min-w-0">
+                          <div className="space-y-1.5 flex-1 min-w-0">
+                            <div className="flex items-center gap-2 flex-wrap">
                               <span className="text-xs font-bold text-orange-600 uppercase tracking-wider">
                                 Plan Option {activePlanTab + 1}
                               </span>
@@ -809,7 +809,7 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
                                 {currentPlan.stops.length} curated {currentPlan.stops.length === 1 ? 'stop' : 'stops'}
                               </span>
                             </div>
-                            <h5 className="text-xl sm:text-2xl font-bold text-neutral-900 font-display">
+                            <h5 className="text-xl sm:text-2xl font-bold text-neutral-900 font-display break-words">
                               {currentPlan.title}
                             </h5>
                             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
@@ -818,7 +818,7 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
                           </div>
 
                           {/* Budget & Price Tag */}
-                          <div className="bg-white p-4 rounded-xl border border-neutral-200 shadow-xs shrink-0 md:min-w-[220px]">
+                          <div className="bg-white p-4 rounded-xl border border-neutral-200 shadow-xs w-full lg:w-auto shrink-0 lg:min-w-[220px]">
                             <div className="text-[11px] font-medium text-neutral-500 uppercase tracking-wider mb-1">
                               Estimated Outing Cost
                             </div>
@@ -830,19 +830,19 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
 
                             <div className="mt-2">
                               {currentPlan.budgetStatus === 'within_budget' && (
-                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
-                                  <Check className="w-3 h-3 text-emerald-600" />
+                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded flex-wrap">
+                                  <Check className="w-3 h-3 text-emerald-600 shrink-0" />
                                   <span>Within PKR {formatBudgetDisplay(submittedPreferences.budget)} budget</span>
                                 </span>
                               )}
                               {currentPlan.budgetStatus === 'over_budget' && (
-                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">
-                                  <AlertCircle className="w-3 h-3 text-amber-600" />
+                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded flex-wrap">
+                                  <AlertCircle className="w-3 h-3 text-amber-600 shrink-0" />
                                   <span>Exceeds target spend</span>
                                 </span>
                               )}
                               {currentPlan.budgetStatus === 'unknown' && (
-                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-neutral-600 bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded">
+                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-neutral-600 bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded flex-wrap">
                                   <span>Budget flexible • Real-time venue prices</span>
                                 </span>
                               )}
@@ -959,11 +959,11 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
                                     </div>
 
                                     {/* Action link */}
-                                    <div className="sm:self-center shrink-0 pt-2 sm:pt-0 flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                                    <div className="sm:self-center shrink-0 pt-2 sm:pt-0 flex flex-wrap sm:flex-nowrap items-center gap-2 w-full sm:w-auto" onClick={(e) => e.stopPropagation()}>
                                       <button
                                         type="button"
                                         onClick={() => setActiveStopIndex(stopIdx)}
-                                        className={`inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg transition-colors cursor-pointer ${
+                                        className={`inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg transition-colors cursor-pointer flex-1 sm:flex-initial ${
                                           isSelectedOnMap
                                             ? 'bg-neutral-900 text-white shadow-xs'
                                             : 'text-neutral-700 bg-neutral-50 hover:bg-orange-50 hover:text-orange-700 border border-neutral-200'
@@ -978,7 +978,7 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
                                           href={place.sourceUrl}
                                           target="_blank"
                                           rel="noopener noreferrer"
-                                          className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-neutral-800 bg-neutral-50 hover:bg-orange-50 hover:text-orange-700 border border-neutral-200 rounded-lg transition-colors cursor-pointer whitespace-nowrap"
+                                          className="inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold text-neutral-800 bg-neutral-50 hover:bg-orange-50 hover:text-orange-700 border border-neutral-200 rounded-lg transition-colors cursor-pointer whitespace-nowrap flex-1 sm:flex-initial"
                                         >
                                           <span>Open in Google Maps</span>
                                           <ExternalLink className="w-3 h-3 text-neutral-400" />
@@ -1008,11 +1008,11 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
 
                   {/* Quick Compare Grid for All Plans */}
                   {outingPlans.plans.length > 1 && (
-                    <div className="pt-4 border-t border-neutral-100">
+                    <div className="pt-4 border-t border-neutral-100 w-full min-w-0">
                       <div className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-3">
                         Compare All {outingPlans.plans.length} Generated Plans
                       </div>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full min-w-0">
                         {outingPlans.plans.map((p, pIdx) => (
                           <button
                             key={p.id || pIdx}
@@ -1021,24 +1021,24 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
                               setActivePlanTab(pIdx);
                               setActiveStopIndex(null);
                             }}
-                            className={`text-left p-4 rounded-xl border transition-all cursor-pointer ${
+                            className={`min-w-0 w-full text-left p-4 rounded-xl border transition-all cursor-pointer ${
                               activePlanTab === pIdx
                                 ? 'border-orange-500 bg-orange-50/40 ring-1 ring-orange-500'
                                 : 'border-neutral-200 bg-white hover:border-neutral-300'
                             }`}
                           >
-                            <div className="flex items-center justify-between mb-1.5">
-                              <span className="text-xs font-bold text-neutral-900">
+                            <div className="flex items-center justify-between mb-1.5 gap-2 min-w-0">
+                              <span className="text-xs font-bold text-neutral-900 truncate">
                                 Option {pIdx + 1}
                               </span>
-                              <span className="text-[10px] text-neutral-500 font-medium">
+                              <span className="text-[10px] text-neutral-500 font-medium shrink-0">
                                 {p.stops.length} stops
                               </span>
                             </div>
-                            <div className="text-xs font-semibold text-neutral-800 truncate mb-1">
+                            <div className="text-xs font-semibold text-neutral-800 truncate mb-1" title={p.title}>
                               {p.title}
                             </div>
-                            <div className="text-[11px] text-neutral-500">
+                            <div className="text-[11px] text-neutral-500 truncate">
                               {p.estimatedTotalCost !== null
                                 ? `PKR ${formatBudgetDisplay(p.estimatedTotalCost)}`
                                 : 'Budget flexible'}
@@ -1086,13 +1086,13 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
 
               {/* Recommendations Cards Grid */}
               {recommendations && recommendations.status === 'success' && recommendations.recommendations.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full min-w-0">
                   {recommendations.recommendations.map((rec) => {
                     const place = rec.item;
                     return (
                       <div
                         key={rec.itemId}
-                        className="p-5 rounded-xl border border-neutral-200 bg-white hover:border-orange-300 hover:shadow-md transition-all flex flex-col justify-between space-y-4"
+                        className="p-5 rounded-xl border border-neutral-200 bg-white hover:border-orange-300 hover:shadow-md transition-all flex flex-col justify-between space-y-4 min-w-0"
                       >
                         <div className="space-y-3">
                           {/* 1. Venue Name */}
@@ -1667,11 +1667,7 @@ export const PlanningForm: React.FC<PlanningFormProps> = ({
             </div>
 
             {/* Form Primary Action */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-neutral-200">
-              <div className="text-xs text-neutral-500 text-center sm:text-left">
-                Every field is validated. Places are retrieved directly for your selected location.
-              </div>
-
+            <div className="flex items-center justify-end pt-4 border-t border-neutral-200">
               <button
                 type="submit"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-semibold tracking-wide text-white bg-orange-600 hover:bg-orange-500 active:bg-orange-700 rounded-xl transition-all shadow-md shadow-orange-600/25 hover:shadow-lg hover:shadow-orange-600/30 active:scale-[0.99] cursor-pointer"

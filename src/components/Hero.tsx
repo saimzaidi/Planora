@@ -44,14 +44,6 @@ export const Hero: React.FC<HeroProps> = ({ onFindPlan }) => {
                 <span>Find My Plan</span>
                 <ArrowDown className="w-4 h-4" />
               </button>
-
-              <div className="flex items-center justify-center sm:justify-start gap-2 text-xs text-neutral-500 py-1">
-                <span>PKR budgets</span>
-                <span aria-hidden="true">·</span>
-                <span>Tailored moods</span>
-                <span aria-hidden="true">·</span>
-                <span>Zero friction</span>
-              </div>
             </div>
 
             {/* Quick Proof Highlights */}
@@ -115,7 +107,7 @@ export const Hero: React.FC<HeroProps> = ({ onFindPlan }) => {
               </div>
 
               {/* Floating accent preview card */}
-              <div className="absolute -bottom-6 -left-4 sm:-bottom-6 sm:-left-6 bg-white p-3.5 sm:p-4 rounded-xl shadow-lg border border-neutral-200/90 flex items-center gap-3 max-w-xs transition-transform hover:-translate-y-0.5">
+              <div className="absolute -bottom-6 left-2 sm:-bottom-6 sm:-left-6 bg-white p-3.5 sm:p-4 rounded-xl shadow-lg border border-neutral-200/90 flex items-center gap-3 max-w-xs transition-transform hover:-translate-y-0.5">
                 <div className="w-10 h-10 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center shrink-0">
                   <Calendar className="w-5 h-5" />
                 </div>

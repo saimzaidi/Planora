@@ -413,15 +413,15 @@ export const PlanoraMap: React.FC<PlanoraMapProps> = ({
     <div className={`relative bg-neutral-100 rounded-2xl border border-neutral-200 overflow-hidden shadow-xs flex flex-col ${className}`}>
       {/* Map Header / Legend Bar */}
       <div className="bg-white/95 backdrop-blur-xs px-4 py-2.5 border-b border-neutral-200 flex flex-wrap items-center justify-between gap-2 z-10">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 min-w-0 flex-1">
           <div className="w-6 h-6 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
             <Compass className="w-3.5 h-3.5" />
           </div>
-          <span className="text-xs font-bold text-neutral-900 font-display">
-            {selectedPlan ? `Outing Route: ${selectedPlan.title}` : 'Geographic Map'}
+          <span className="text-xs font-bold text-neutral-900 font-display truncate max-w-[150px] sm:max-w-xs md:max-w-md">
+            {selectedPlan ? `Route: ${selectedPlan.title}` : 'Geographic Map'}
           </span>
           {validPointsCount > 0 && (
-            <span className="text-[10px] font-semibold text-neutral-500 bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded-full">
+            <span className="text-[10px] font-semibold text-neutral-500 bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded-full shrink-0">
               {validPointsCount} {validPointsCount === 1 ? 'spot' : 'spots'} mapped
             </span>
           )}

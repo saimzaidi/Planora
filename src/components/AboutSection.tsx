@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, ShieldCheck, Heart, Sparkles, MapPin } from 'lucide-react';
+import { Compass, ShieldCheck, Heart, Sparkles } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   return (
@@ -56,14 +56,6 @@ export const AboutSection: React.FC = () => {
             <p className="text-sm text-neutral-600 leading-relaxed">
               Rather than scattering disconnected restaurant links, we combine activities that make geographic and chronological sense together.
             </p>
-          </div>
-        </div>
-
-        {/* Small location footprint */}
-        <div className="mt-14 pt-10 border-t border-neutral-200 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4 text-center sm:text-left">
-          <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-orange-600" />
-            <span>Currently focused on Pakistani urban hubs: Lahore, Karachi, Islamabad & Rawalpindi.</span>
           </div>
         </div>
       </div>
