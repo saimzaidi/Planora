@@ -71,10 +71,9 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom copyright line */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
-          <div>
-            © {new Date().getFullYear()} Planora. All rights reserved.
-          </div>
+        <div className="pt-8 flex flex-col items-center sm:items-start gap-1 text-xs text-neutral-500">
+          <div>© 2026 Planora. All rights reserved.</div>
+          <div>Made by Saim Zaidi</div>
         </div>
       </div>
     </footer>
